@@ -1,0 +1,205 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="UnityEngine.UIElements" #>
+<#@ output extension=".cs" #>
+
+<#
+    static string ToUpper(string name)
+    {
+        if (name.Length > 1)
+        {
+            return string.Format("{0}{1}", name.Substring(0, 1).ToUpper(), name.Substring(1));
+        }
+        else
+        {
+            return name.ToUpper();
+        }
+    }
+
+    static string GetBaseTypeName(Type t)
+    {
+        var name = t.IsGenericType ? t.Name.Split('`')[0] : t.Name;
+        if (!t.IsGenericParameter && t.DeclaringType != null)
+        {
+            name = string.Format("{0}.{1}", GetTypeName(t.DeclaringType), name);
+        }
+        if (t.FullName == "System.Object")
+        {
+            return "object";
+        }
+        else if (t.FullName == "System.Int32")
+        {
+            return "int";
+        }
+        else if (t.FullName == "System.Single")
+        {
+            return "float";
+        }
+        else if (t.FullName == "System.Boolean")
+        {
+            return "bool";
+        }
+        else if (t.FullName == "System.String")
+        {
+            return "string";
+        }
+        else if ((string.IsNullOrEmpty(t.Namespace) ||
+            t.Namespace == "System" ||
+            t.Namespace == "System.Collections.Generic" ||
+            t.Namespace == "UnityEngine" ||
+            t.Namespace == "UnityEngine.UIElements") &&
+            t.FullName != "UnityEngine.Object")
+        {
+            return name;
+        }
+        else
+        {
+            return string.Format("{0}.{1}", t.Namespace, name);
+        }
+    }
+
+    static IEnumerable<string> EnumerateGenericArgumentsNames(Type t) => t.GetGenericArguments().Select(x => GetTypeName(x));
+    static string GetGenericArgumentsNameSet(Type t) => string.Join(", ", EnumerateGenericArgumentsNames(t));
+
+    static string GetTypeName(Type t)
+        =>
+            t.IsGenericType
+                ? string.Format("{0}<{1}>", GetBaseTypeName(t), GetGenericArgumentsNameSet(t))
+                : GetBaseTypeName(t);
+#>
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+namespace UIElementsExtensions
+{
+    public static class VisualElementExtensions
+    {
+        public static T Child<T>(this T self, VisualElement child) where T : VisualElement
+        {
+            self.Add(child);
+            return self;
+        }
+
+        public static T Style<T>(this T self, Action<IStyle> fn) where T : VisualElement
+        {
+            fn(self.style);
+            return self;
+        }
+
+        public static T Modify<T>(this T self, Action<T> fn) where T : VisualElement
+        {
+            fn(self);
+            return self;
+        }
+    }
+<#
+    foreach (var t in typeof(Button).Assembly.GetTypes())
+    {
+        if (t.IsSubclassOf(typeof(VisualElement)) && t.IsPublic)
+        {
+            var baseTypeName = t.IsGenericType ? t.Name.Split('`')[0] : t.Name;
+            var typeName = GetTypeName(t);
+            var genericArgs = GetGenericArgumentsNameSet(t);
+            if (!string.IsNullOrEmpty(genericArgs))
+            {
+                genericArgs = ", " + genericArgs;
+            }
+            string where = "";
+            if (t.IsGenericType)
+            {
+                var l = new List<string>();
+                foreach (var t2 in t.GetGenericArguments())
+                {
+                    var c = t2.GetGenericParameterConstraints();
+                    if (c.Length > 0)
+                    {
+                        l.Add(string.Format("where {0}: {1}", t2.Name, string.Join(", ", c.Select(x => GetTypeName(x)))));
+                    }
+                }
+                where = string.Join(", ", l);
+            }
+#>
+
+    public static class <#= baseTypeName#>Extensions
+    {
+<#
+            foreach (var p in t.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+            {
+                var m = p.GetSetMethod();
+                var bm = m?.GetBaseDefinition();
+                if (m != null && (bm == null || bm == m))
+                {
+#>
+
+        public static T <#= ToUpper(p.Name)#><T<#= genericArgs#>>(this T self, <#= GetTypeName(p.PropertyType)#> value) where T: <#= typeName#> <#= where#>
+        {
+            self.<#= p.Name#> = value;
+            return self;
+        }
+<#
+                }
+            }
+#>
+
+<#
+            foreach (var e in t.GetEvents())
+            {
+                var obsolete = false;
+                foreach (var a in e.GetCustomAttributes(false))
+                {
+                    if (a is ObsoleteAttribute)
+                    {
+                        obsolete = true;
+                        break;
+                    }
+                }
+                if (obsolete)
+                {
+                    continue;
+                }
+                var m = e.EventHandlerType.GetMethods()[0];
+                var evArgTypes = string.Join(", ", new string[]{ baseTypeName }.Concat(m.GetParameters().Select((x) => GetTypeName(x.ParameterType))));
+                var evArgs = string.Join(", ", m.GetParameters().Select((x, index) => string.Format("a{0}", index)));
+#>
+
+        public static <#= baseTypeName#> <#= ToUpper(e.Name)#>(this <#= baseTypeName#> self, Action<<#= evArgTypes#>> h)
+        {
+            self.<#= e.Name#> += (<#= evArgs#>) => h(<#= evArgs.Length > 0 ? string.Format("self, {0}", evArgs) : "self"#>);
+            return self;
+        }
+<#
+            }
+#>
+
+    }
+<#
+        }
+    }
+#>
+    public static class StyleExtensions
+    {
+<#
+    var styleType = typeof(IStyle);
+    foreach (var p in typeof(IStyle).GetProperties())
+    {
+#>
+
+        public static <#= styleType.Name #> <#= ToUpper(p.Name) #>(this <#= styleType.Name #> self, <#= GetTypeName(p.PropertyType) #> value)
+        {
+            self.<#= p.Name #> = value;
+            return self;
+        }
+<#
+    }
+#>
+    }
+}
