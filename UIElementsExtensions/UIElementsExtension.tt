@@ -143,6 +143,20 @@ namespace UIElementsExtensions
 <#
             foreach (var p in t.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
+                var obsolete = false;
+                foreach (var a in p.GetCustomAttributes(false))
+                {
+                    if (a is ObsoleteAttribute)
+                    {
+                        obsolete = true;
+                        break;
+                    }
+                }
+                if (obsolete)
+                {
+                    continue;
+                }
+                
                 var m = p.GetSetMethod();
                 var bm = m?.GetBaseDefinition();
                 if (m != null && (bm == null || bm == m))
@@ -202,9 +216,9 @@ namespace UIElementsExtensions
     {
 #>
 
-        public static <#= styleType.Name #> <#= ToUpper(p.Name) #>(this <#= styleType.Name #> self, <#= GetTypeName(p.PropertyType) #> value)
+        public static T <#= ToUpper(p.Name) #><T>(this T self, <#= GetTypeName(p.PropertyType) #> value) where T : VisualElement
         {
-            self.<#= p.Name #> = value;
+            self.style.<#= p.Name #> = value;
             return self;
         }
 <#

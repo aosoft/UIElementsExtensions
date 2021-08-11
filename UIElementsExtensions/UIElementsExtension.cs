@@ -184,12 +184,6 @@ namespace UIElementsExtensions
             return self;
         }
 
-        public static T CacheAsBitmap<T>(this T self, bool value) where T: VisualElement 
-        {
-            self.cacheAsBitmap = value;
-            return self;
-        }
-
         public static T Tooltip<T>(this T self, string value) where T: VisualElement 
         {
             self.tooltip = value;
@@ -693,375 +687,375 @@ namespace UIElementsExtensions
     public static class StyleExtensions
     {
 
-        public static IStyle AlignContent(this IStyle self, StyleEnum<Align> value)
+        public static T AlignContent<T>(this T self, StyleEnum<Align> value) where T : VisualElement
         {
-            self.alignContent = value;
+            self.style.alignContent = value;
             return self;
         }
 
-        public static IStyle AlignItems(this IStyle self, StyleEnum<Align> value)
+        public static T AlignItems<T>(this T self, StyleEnum<Align> value) where T : VisualElement
         {
-            self.alignItems = value;
+            self.style.alignItems = value;
             return self;
         }
 
-        public static IStyle AlignSelf(this IStyle self, StyleEnum<Align> value)
+        public static T AlignSelf<T>(this T self, StyleEnum<Align> value) where T : VisualElement
         {
-            self.alignSelf = value;
+            self.style.alignSelf = value;
             return self;
         }
 
-        public static IStyle BackgroundColor(this IStyle self, StyleColor value)
+        public static T BackgroundColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.backgroundColor = value;
+            self.style.backgroundColor = value;
             return self;
         }
 
-        public static IStyle BackgroundImage(this IStyle self, StyleBackground value)
+        public static T BackgroundImage<T>(this T self, StyleBackground value) where T : VisualElement
         {
-            self.backgroundImage = value;
+            self.style.backgroundImage = value;
             return self;
         }
 
-        public static IStyle BorderBottomColor(this IStyle self, StyleColor value)
+        public static T BorderBottomColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.borderBottomColor = value;
+            self.style.borderBottomColor = value;
             return self;
         }
 
-        public static IStyle BorderBottomLeftRadius(this IStyle self, StyleLength value)
+        public static T BorderBottomLeftRadius<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.borderBottomLeftRadius = value;
+            self.style.borderBottomLeftRadius = value;
             return self;
         }
 
-        public static IStyle BorderBottomRightRadius(this IStyle self, StyleLength value)
+        public static T BorderBottomRightRadius<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.borderBottomRightRadius = value;
+            self.style.borderBottomRightRadius = value;
             return self;
         }
 
-        public static IStyle BorderBottomWidth(this IStyle self, StyleFloat value)
+        public static T BorderBottomWidth<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.borderBottomWidth = value;
+            self.style.borderBottomWidth = value;
             return self;
         }
 
-        public static IStyle BorderLeftColor(this IStyle self, StyleColor value)
+        public static T BorderLeftColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.borderLeftColor = value;
+            self.style.borderLeftColor = value;
             return self;
         }
 
-        public static IStyle BorderLeftWidth(this IStyle self, StyleFloat value)
+        public static T BorderLeftWidth<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.borderLeftWidth = value;
+            self.style.borderLeftWidth = value;
             return self;
         }
 
-        public static IStyle BorderRightColor(this IStyle self, StyleColor value)
+        public static T BorderRightColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.borderRightColor = value;
+            self.style.borderRightColor = value;
             return self;
         }
 
-        public static IStyle BorderRightWidth(this IStyle self, StyleFloat value)
+        public static T BorderRightWidth<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.borderRightWidth = value;
+            self.style.borderRightWidth = value;
             return self;
         }
 
-        public static IStyle BorderTopColor(this IStyle self, StyleColor value)
+        public static T BorderTopColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.borderTopColor = value;
+            self.style.borderTopColor = value;
             return self;
         }
 
-        public static IStyle BorderTopLeftRadius(this IStyle self, StyleLength value)
+        public static T BorderTopLeftRadius<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.borderTopLeftRadius = value;
+            self.style.borderTopLeftRadius = value;
             return self;
         }
 
-        public static IStyle BorderTopRightRadius(this IStyle self, StyleLength value)
+        public static T BorderTopRightRadius<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.borderTopRightRadius = value;
+            self.style.borderTopRightRadius = value;
             return self;
         }
 
-        public static IStyle BorderTopWidth(this IStyle self, StyleFloat value)
+        public static T BorderTopWidth<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.borderTopWidth = value;
+            self.style.borderTopWidth = value;
             return self;
         }
 
-        public static IStyle Bottom(this IStyle self, StyleLength value)
+        public static T Bottom<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.bottom = value;
+            self.style.bottom = value;
             return self;
         }
 
-        public static IStyle Color(this IStyle self, StyleColor value)
+        public static T Color<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.color = value;
+            self.style.color = value;
             return self;
         }
 
-        public static IStyle Cursor(this IStyle self, StyleCursor value)
+        public static T Cursor<T>(this T self, StyleCursor value) where T : VisualElement
         {
-            self.cursor = value;
+            self.style.cursor = value;
             return self;
         }
 
-        public static IStyle Display(this IStyle self, StyleEnum<DisplayStyle> value)
+        public static T Display<T>(this T self, StyleEnum<DisplayStyle> value) where T : VisualElement
         {
-            self.display = value;
+            self.style.display = value;
             return self;
         }
 
-        public static IStyle FlexBasis(this IStyle self, StyleLength value)
+        public static T FlexBasis<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.flexBasis = value;
+            self.style.flexBasis = value;
             return self;
         }
 
-        public static IStyle FlexDirection(this IStyle self, StyleEnum<FlexDirection> value)
+        public static T FlexDirection<T>(this T self, StyleEnum<FlexDirection> value) where T : VisualElement
         {
-            self.flexDirection = value;
+            self.style.flexDirection = value;
             return self;
         }
 
-        public static IStyle FlexGrow(this IStyle self, StyleFloat value)
+        public static T FlexGrow<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.flexGrow = value;
+            self.style.flexGrow = value;
             return self;
         }
 
-        public static IStyle FlexShrink(this IStyle self, StyleFloat value)
+        public static T FlexShrink<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.flexShrink = value;
+            self.style.flexShrink = value;
             return self;
         }
 
-        public static IStyle FlexWrap(this IStyle self, StyleEnum<Wrap> value)
+        public static T FlexWrap<T>(this T self, StyleEnum<Wrap> value) where T : VisualElement
         {
-            self.flexWrap = value;
+            self.style.flexWrap = value;
             return self;
         }
 
-        public static IStyle FontSize(this IStyle self, StyleLength value)
+        public static T FontSize<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.fontSize = value;
+            self.style.fontSize = value;
             return self;
         }
 
-        public static IStyle Height(this IStyle self, StyleLength value)
+        public static T Height<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.height = value;
+            self.style.height = value;
             return self;
         }
 
-        public static IStyle JustifyContent(this IStyle self, StyleEnum<Justify> value)
+        public static T JustifyContent<T>(this T self, StyleEnum<Justify> value) where T : VisualElement
         {
-            self.justifyContent = value;
+            self.style.justifyContent = value;
             return self;
         }
 
-        public static IStyle Left(this IStyle self, StyleLength value)
+        public static T Left<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.left = value;
+            self.style.left = value;
             return self;
         }
 
-        public static IStyle MarginBottom(this IStyle self, StyleLength value)
+        public static T MarginBottom<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.marginBottom = value;
+            self.style.marginBottom = value;
             return self;
         }
 
-        public static IStyle MarginLeft(this IStyle self, StyleLength value)
+        public static T MarginLeft<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.marginLeft = value;
+            self.style.marginLeft = value;
             return self;
         }
 
-        public static IStyle MarginRight(this IStyle self, StyleLength value)
+        public static T MarginRight<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.marginRight = value;
+            self.style.marginRight = value;
             return self;
         }
 
-        public static IStyle MarginTop(this IStyle self, StyleLength value)
+        public static T MarginTop<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.marginTop = value;
+            self.style.marginTop = value;
             return self;
         }
 
-        public static IStyle MaxHeight(this IStyle self, StyleLength value)
+        public static T MaxHeight<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.maxHeight = value;
+            self.style.maxHeight = value;
             return self;
         }
 
-        public static IStyle MaxWidth(this IStyle self, StyleLength value)
+        public static T MaxWidth<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.maxWidth = value;
+            self.style.maxWidth = value;
             return self;
         }
 
-        public static IStyle MinHeight(this IStyle self, StyleLength value)
+        public static T MinHeight<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.minHeight = value;
+            self.style.minHeight = value;
             return self;
         }
 
-        public static IStyle MinWidth(this IStyle self, StyleLength value)
+        public static T MinWidth<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.minWidth = value;
+            self.style.minWidth = value;
             return self;
         }
 
-        public static IStyle Opacity(this IStyle self, StyleFloat value)
+        public static T Opacity<T>(this T self, StyleFloat value) where T : VisualElement
         {
-            self.opacity = value;
+            self.style.opacity = value;
             return self;
         }
 
-        public static IStyle Overflow(this IStyle self, StyleEnum<Overflow> value)
+        public static T Overflow<T>(this T self, StyleEnum<Overflow> value) where T : VisualElement
         {
-            self.overflow = value;
+            self.style.overflow = value;
             return self;
         }
 
-        public static IStyle PaddingBottom(this IStyle self, StyleLength value)
+        public static T PaddingBottom<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.paddingBottom = value;
+            self.style.paddingBottom = value;
             return self;
         }
 
-        public static IStyle PaddingLeft(this IStyle self, StyleLength value)
+        public static T PaddingLeft<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.paddingLeft = value;
+            self.style.paddingLeft = value;
             return self;
         }
 
-        public static IStyle PaddingRight(this IStyle self, StyleLength value)
+        public static T PaddingRight<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.paddingRight = value;
+            self.style.paddingRight = value;
             return self;
         }
 
-        public static IStyle PaddingTop(this IStyle self, StyleLength value)
+        public static T PaddingTop<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.paddingTop = value;
+            self.style.paddingTop = value;
             return self;
         }
 
-        public static IStyle Position(this IStyle self, StyleEnum<Position> value)
+        public static T Position<T>(this T self, StyleEnum<Position> value) where T : VisualElement
         {
-            self.position = value;
+            self.style.position = value;
             return self;
         }
 
-        public static IStyle Right(this IStyle self, StyleLength value)
+        public static T Right<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.right = value;
+            self.style.right = value;
             return self;
         }
 
-        public static IStyle TextOverflow(this IStyle self, StyleEnum<TextOverflow> value)
+        public static T TextOverflow<T>(this T self, StyleEnum<TextOverflow> value) where T : VisualElement
         {
-            self.textOverflow = value;
+            self.style.textOverflow = value;
             return self;
         }
 
-        public static IStyle Top(this IStyle self, StyleLength value)
+        public static T Top<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.top = value;
+            self.style.top = value;
             return self;
         }
 
-        public static IStyle UnityBackgroundImageTintColor(this IStyle self, StyleColor value)
+        public static T UnityBackgroundImageTintColor<T>(this T self, StyleColor value) where T : VisualElement
         {
-            self.unityBackgroundImageTintColor = value;
+            self.style.unityBackgroundImageTintColor = value;
             return self;
         }
 
-        public static IStyle UnityBackgroundScaleMode(this IStyle self, StyleEnum<ScaleMode> value)
+        public static T UnityBackgroundScaleMode<T>(this T self, StyleEnum<ScaleMode> value) where T : VisualElement
         {
-            self.unityBackgroundScaleMode = value;
+            self.style.unityBackgroundScaleMode = value;
             return self;
         }
 
-        public static IStyle UnityFont(this IStyle self, StyleFont value)
+        public static T UnityFont<T>(this T self, StyleFont value) where T : VisualElement
         {
-            self.unityFont = value;
+            self.style.unityFont = value;
             return self;
         }
 
-        public static IStyle UnityFontStyleAndWeight(this IStyle self, StyleEnum<FontStyle> value)
+        public static T UnityFontStyleAndWeight<T>(this T self, StyleEnum<FontStyle> value) where T : VisualElement
         {
-            self.unityFontStyleAndWeight = value;
+            self.style.unityFontStyleAndWeight = value;
             return self;
         }
 
-        public static IStyle UnityOverflowClipBox(this IStyle self, StyleEnum<OverflowClipBox> value)
+        public static T UnityOverflowClipBox<T>(this T self, StyleEnum<OverflowClipBox> value) where T : VisualElement
         {
-            self.unityOverflowClipBox = value;
+            self.style.unityOverflowClipBox = value;
             return self;
         }
 
-        public static IStyle UnitySliceBottom(this IStyle self, StyleInt value)
+        public static T UnitySliceBottom<T>(this T self, StyleInt value) where T : VisualElement
         {
-            self.unitySliceBottom = value;
+            self.style.unitySliceBottom = value;
             return self;
         }
 
-        public static IStyle UnitySliceLeft(this IStyle self, StyleInt value)
+        public static T UnitySliceLeft<T>(this T self, StyleInt value) where T : VisualElement
         {
-            self.unitySliceLeft = value;
+            self.style.unitySliceLeft = value;
             return self;
         }
 
-        public static IStyle UnitySliceRight(this IStyle self, StyleInt value)
+        public static T UnitySliceRight<T>(this T self, StyleInt value) where T : VisualElement
         {
-            self.unitySliceRight = value;
+            self.style.unitySliceRight = value;
             return self;
         }
 
-        public static IStyle UnitySliceTop(this IStyle self, StyleInt value)
+        public static T UnitySliceTop<T>(this T self, StyleInt value) where T : VisualElement
         {
-            self.unitySliceTop = value;
+            self.style.unitySliceTop = value;
             return self;
         }
 
-        public static IStyle UnityTextAlign(this IStyle self, StyleEnum<TextAnchor> value)
+        public static T UnityTextAlign<T>(this T self, StyleEnum<TextAnchor> value) where T : VisualElement
         {
-            self.unityTextAlign = value;
+            self.style.unityTextAlign = value;
             return self;
         }
 
-        public static IStyle UnityTextOverflowPosition(this IStyle self, StyleEnum<TextOverflowPosition> value)
+        public static T UnityTextOverflowPosition<T>(this T self, StyleEnum<TextOverflowPosition> value) where T : VisualElement
         {
-            self.unityTextOverflowPosition = value;
+            self.style.unityTextOverflowPosition = value;
             return self;
         }
 
-        public static IStyle Visibility(this IStyle self, StyleEnum<Visibility> value)
+        public static T Visibility<T>(this T self, StyleEnum<Visibility> value) where T : VisualElement
         {
-            self.visibility = value;
+            self.style.visibility = value;
             return self;
         }
 
-        public static IStyle WhiteSpace(this IStyle self, StyleEnum<WhiteSpace> value)
+        public static T WhiteSpace<T>(this T self, StyleEnum<WhiteSpace> value) where T : VisualElement
         {
-            self.whiteSpace = value;
+            self.style.whiteSpace = value;
             return self;
         }
 
-        public static IStyle Width(this IStyle self, StyleLength value)
+        public static T Width<T>(this T self, StyleLength value) where T : VisualElement
         {
-            self.width = value;
+            self.style.width = value;
             return self;
         }
     }
