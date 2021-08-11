@@ -161,14 +161,34 @@ namespace UIElementsExtensions
                 var bm = m?.GetBaseDefinition();
                 if (m != null && (bm == null || bm == m))
                 {
+                    if (p.PropertyType == typeof(StyleLength))
+                    {
 #>
 
-        public static T <#= ToUpper(p.Name)#><T<#= genericArgs#>>(this T self, <#= GetTypeName(p.PropertyType)#> value) where T: <#= typeName#> <#= where#>
+        public static T <#= ToUpper(p.Name) #><T<#= genericArgs #>>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T: <#= typeName #> <#= where #>
         {
-            self.<#= p.Name#> = value;
+            self.<#= p.Name #> = new Length(value, unit);
+            return self;
+        }
+
+        public static T <#= ToUpper(p.Name) #><T<#= genericArgs #>>(this T self, StyleKeyword keyword) where T: <#= typeName #> <#= where #>
+        {
+            self.<#= p.Name #> = keyword;
             return self;
         }
 <#
+                    }
+                    else
+                    {
+#>
+
+        public static T <#= ToUpper(p.Name) #><T<#= genericArgs #>>(this T self, <#= GetTypeName(p.PropertyType) #> value) where T: <#= typeName #> <#= where #>
+        {
+            self.<#= p.Name #> = value;
+            return self;
+        }
+<#
+                    }
                 }
             }
 #>
@@ -214,6 +234,24 @@ namespace UIElementsExtensions
     var styleType = typeof(IStyle);
     foreach (var p in typeof(IStyle).GetProperties())
     {
+        if (p.PropertyType == typeof(StyleLength))
+        {
+#>
+        public static T <#= ToUpper(p.Name) #><T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.<#= p.Name #> = new Length(value, unit);
+            return self;
+        }
+
+        public static T <#= ToUpper(p.Name) #><T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.<#= p.Name #> = keyword;
+            return self;
+        }
+<#
+        }
+        else
+        {
 #>
 
         public static T <#= ToUpper(p.Name) #><T>(this T self, <#= GetTypeName(p.PropertyType) #> value) where T : VisualElement
@@ -222,6 +260,7 @@ namespace UIElementsExtensions
             return self;
         }
 <#
+        }
     }
 #>
     }

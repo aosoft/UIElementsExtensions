@@ -722,16 +722,26 @@ namespace UIElementsExtensions
             self.style.borderBottomColor = value;
             return self;
         }
-
-        public static T BorderBottomLeftRadius<T>(this T self, StyleLength value) where T : VisualElement
+        public static T BorderBottomLeftRadius<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.borderBottomLeftRadius = value;
+            self.style.borderBottomLeftRadius = new Length(value, unit);
             return self;
         }
 
-        public static T BorderBottomRightRadius<T>(this T self, StyleLength value) where T : VisualElement
+        public static T BorderBottomLeftRadius<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.borderBottomRightRadius = value;
+            self.style.borderBottomLeftRadius = keyword;
+            return self;
+        }
+        public static T BorderBottomRightRadius<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.borderBottomRightRadius = new Length(value, unit);
+            return self;
+        }
+
+        public static T BorderBottomRightRadius<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.borderBottomRightRadius = keyword;
             return self;
         }
 
@@ -770,16 +780,26 @@ namespace UIElementsExtensions
             self.style.borderTopColor = value;
             return self;
         }
-
-        public static T BorderTopLeftRadius<T>(this T self, StyleLength value) where T : VisualElement
+        public static T BorderTopLeftRadius<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.borderTopLeftRadius = value;
+            self.style.borderTopLeftRadius = new Length(value, unit);
             return self;
         }
 
-        public static T BorderTopRightRadius<T>(this T self, StyleLength value) where T : VisualElement
+        public static T BorderTopLeftRadius<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.borderTopRightRadius = value;
+            self.style.borderTopLeftRadius = keyword;
+            return self;
+        }
+        public static T BorderTopRightRadius<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.borderTopRightRadius = new Length(value, unit);
+            return self;
+        }
+
+        public static T BorderTopRightRadius<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.borderTopRightRadius = keyword;
             return self;
         }
 
@@ -788,10 +808,15 @@ namespace UIElementsExtensions
             self.style.borderTopWidth = value;
             return self;
         }
-
-        public static T Bottom<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Bottom<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.bottom = value;
+            self.style.bottom = new Length(value, unit);
+            return self;
+        }
+
+        public static T Bottom<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.bottom = keyword;
             return self;
         }
 
@@ -812,10 +837,15 @@ namespace UIElementsExtensions
             self.style.display = value;
             return self;
         }
-
-        public static T FlexBasis<T>(this T self, StyleLength value) where T : VisualElement
+        public static T FlexBasis<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.flexBasis = value;
+            self.style.flexBasis = new Length(value, unit);
+            return self;
+        }
+
+        public static T FlexBasis<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.flexBasis = keyword;
             return self;
         }
 
@@ -842,16 +872,26 @@ namespace UIElementsExtensions
             self.style.flexWrap = value;
             return self;
         }
-
-        public static T FontSize<T>(this T self, StyleLength value) where T : VisualElement
+        public static T FontSize<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.fontSize = value;
+            self.style.fontSize = new Length(value, unit);
             return self;
         }
 
-        public static T Height<T>(this T self, StyleLength value) where T : VisualElement
+        public static T FontSize<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.height = value;
+            self.style.fontSize = keyword;
+            return self;
+        }
+        public static T Height<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.height = new Length(value, unit);
+            return self;
+        }
+
+        public static T Height<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.height = keyword;
             return self;
         }
 
@@ -860,58 +900,103 @@ namespace UIElementsExtensions
             self.style.justifyContent = value;
             return self;
         }
-
-        public static T Left<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Left<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.left = value;
+            self.style.left = new Length(value, unit);
             return self;
         }
 
-        public static T MarginBottom<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Left<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.marginBottom = value;
+            self.style.left = keyword;
+            return self;
+        }
+        public static T MarginBottom<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.marginBottom = new Length(value, unit);
             return self;
         }
 
-        public static T MarginLeft<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MarginBottom<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.marginLeft = value;
+            self.style.marginBottom = keyword;
+            return self;
+        }
+        public static T MarginLeft<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.marginLeft = new Length(value, unit);
             return self;
         }
 
-        public static T MarginRight<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MarginLeft<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.marginRight = value;
+            self.style.marginLeft = keyword;
+            return self;
+        }
+        public static T MarginRight<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.marginRight = new Length(value, unit);
             return self;
         }
 
-        public static T MarginTop<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MarginRight<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.marginTop = value;
+            self.style.marginRight = keyword;
+            return self;
+        }
+        public static T MarginTop<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.marginTop = new Length(value, unit);
             return self;
         }
 
-        public static T MaxHeight<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MarginTop<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.maxHeight = value;
+            self.style.marginTop = keyword;
+            return self;
+        }
+        public static T MaxHeight<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.maxHeight = new Length(value, unit);
             return self;
         }
 
-        public static T MaxWidth<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MaxHeight<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.maxWidth = value;
+            self.style.maxHeight = keyword;
+            return self;
+        }
+        public static T MaxWidth<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.maxWidth = new Length(value, unit);
             return self;
         }
 
-        public static T MinHeight<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MaxWidth<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.minHeight = value;
+            self.style.maxWidth = keyword;
+            return self;
+        }
+        public static T MinHeight<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.minHeight = new Length(value, unit);
             return self;
         }
 
-        public static T MinWidth<T>(this T self, StyleLength value) where T : VisualElement
+        public static T MinHeight<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.minWidth = value;
+            self.style.minHeight = keyword;
+            return self;
+        }
+        public static T MinWidth<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.minWidth = new Length(value, unit);
+            return self;
+        }
+
+        public static T MinWidth<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.minWidth = keyword;
             return self;
         }
 
@@ -926,28 +1011,48 @@ namespace UIElementsExtensions
             self.style.overflow = value;
             return self;
         }
-
-        public static T PaddingBottom<T>(this T self, StyleLength value) where T : VisualElement
+        public static T PaddingBottom<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.paddingBottom = value;
+            self.style.paddingBottom = new Length(value, unit);
             return self;
         }
 
-        public static T PaddingLeft<T>(this T self, StyleLength value) where T : VisualElement
+        public static T PaddingBottom<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.paddingLeft = value;
+            self.style.paddingBottom = keyword;
+            return self;
+        }
+        public static T PaddingLeft<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.paddingLeft = new Length(value, unit);
             return self;
         }
 
-        public static T PaddingRight<T>(this T self, StyleLength value) where T : VisualElement
+        public static T PaddingLeft<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.paddingRight = value;
+            self.style.paddingLeft = keyword;
+            return self;
+        }
+        public static T PaddingRight<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.paddingRight = new Length(value, unit);
             return self;
         }
 
-        public static T PaddingTop<T>(this T self, StyleLength value) where T : VisualElement
+        public static T PaddingRight<T>(this T self, StyleKeyword keyword) where T : VisualElement
         {
-            self.style.paddingTop = value;
+            self.style.paddingRight = keyword;
+            return self;
+        }
+        public static T PaddingTop<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
+        {
+            self.style.paddingTop = new Length(value, unit);
+            return self;
+        }
+
+        public static T PaddingTop<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.paddingTop = keyword;
             return self;
         }
 
@@ -956,10 +1061,15 @@ namespace UIElementsExtensions
             self.style.position = value;
             return self;
         }
-
-        public static T Right<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Right<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.right = value;
+            self.style.right = new Length(value, unit);
+            return self;
+        }
+
+        public static T Right<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.right = keyword;
             return self;
         }
 
@@ -968,10 +1078,15 @@ namespace UIElementsExtensions
             self.style.textOverflow = value;
             return self;
         }
-
-        public static T Top<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Top<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.top = value;
+            self.style.top = new Length(value, unit);
+            return self;
+        }
+
+        public static T Top<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.top = keyword;
             return self;
         }
 
@@ -1052,10 +1167,15 @@ namespace UIElementsExtensions
             self.style.whiteSpace = value;
             return self;
         }
-
-        public static T Width<T>(this T self, StyleLength value) where T : VisualElement
+        public static T Width<T>(this T self, float value, LengthUnit unit = LengthUnit.Pixel) where T : VisualElement
         {
-            self.style.width = value;
+            self.style.width = new Length(value, unit);
+            return self;
+        }
+
+        public static T Width<T>(this T self, StyleKeyword keyword) where T : VisualElement
+        {
+            self.style.width = keyword;
             return self;
         }
     }
