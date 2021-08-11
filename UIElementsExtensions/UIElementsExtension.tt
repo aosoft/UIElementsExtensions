@@ -81,7 +81,7 @@ using UnityEngine.UIElements;
 
 namespace UIElementsExtensions
 {
-    public static class VisualElementExtensions
+    public static class VisualElementExtensions2
     {
         public static T Child<T>(this T self, VisualElement child) where T : VisualElement
         {
@@ -101,10 +101,19 @@ namespace UIElementsExtensions
             return self;
         }
     }
+
+    public static class BaseFieldExtensions2
+    {
+        public static T ValueChanged<T, TValueType>(this T self, Action<T, TValueType> h) where T: BaseField<TValueType>
+        {
+            self.RegisterCallback(new EventCallback<ChangeEvent<TValueType>>(e => h(self, e.newValue)));
+            return self;
+        }
+    }
 <#
     foreach (var t in typeof(Button).Assembly.GetTypes())
     {
-        if (t.IsSubclassOf(typeof(VisualElement)) && t.IsPublic)
+        if (t.IsSubclassOf(typeof(CallbackEventHandler)) && t.IsPublic)
         {
             var baseTypeName = t.IsGenericType ? t.Name.Split('`')[0] : t.Name;
             var typeName = GetTypeName(t);

@@ -28,6 +28,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UIElementsExtension.cs</LastGenOutput>
     </None>
+    <Compile Update="UIElementsExtension.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UIElementsExtension.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   
 </Project>

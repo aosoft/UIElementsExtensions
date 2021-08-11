@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace UIElementsExtensions
 {
-    public static class VisualElementExtensions
+    public static class VisualElementExtensions2
     {
         public static T Child<T>(this T self, VisualElement child) where T : VisualElement
         {
@@ -28,6 +28,15 @@ namespace UIElementsExtensions
         }
     }
 
+    public static class BaseFieldExtensions2
+    {
+        public static T ValueChanged<T, TValueType>(this T self, Action<T, TValueType> h) where T: BaseField<TValueType>
+        {
+            self.RegisterCallback(new EventCallback<ChangeEvent<TValueType>>(e => h(self, e.newValue)));
+            return self;
+        }
+    }
+
     public static class BindableElementExtensions
     {
 
@@ -40,6 +49,30 @@ namespace UIElementsExtensions
         public static T BindingPath<T>(this T self, string value) where T: BindableElement 
         {
             self.bindingPath = value;
+            return self;
+        }
+
+
+    }
+
+    public static class FocusableExtensions
+    {
+
+        public static T Focusable<T>(this T self, bool value) where T: Focusable 
+        {
+            self.focusable = value;
+            return self;
+        }
+
+        public static T TabIndex<T>(this T self, int value) where T: Focusable 
+        {
+            self.tabIndex = value;
+            return self;
+        }
+
+        public static T DelegatesFocus<T>(this T self, bool value) where T: Focusable 
+        {
+            self.delegatesFocus = value;
             return self;
         }
 
@@ -100,6 +133,66 @@ namespace UIElementsExtensions
         public static T DisplayTooltipWhenElided<T>(this T self, bool value) where T: TextElement 
         {
             self.displayTooltipWhenElided = value;
+            return self;
+        }
+
+
+    }
+
+    public static class VisualElementExtensions
+    {
+
+        public static T ViewDataKey<T>(this T self, string value) where T: VisualElement 
+        {
+            self.viewDataKey = value;
+            return self;
+        }
+
+        public static T UserData<T>(this T self, object value) where T: VisualElement 
+        {
+            self.userData = value;
+            return self;
+        }
+
+        public static T UsageHints<T>(this T self, UsageHints value) where T: VisualElement 
+        {
+            self.usageHints = value;
+            return self;
+        }
+
+        public static T PickingMode<T>(this T self, PickingMode value) where T: VisualElement 
+        {
+            self.pickingMode = value;
+            return self;
+        }
+
+        public static T Name<T>(this T self, string value) where T: VisualElement 
+        {
+            self.name = value;
+            return self;
+        }
+
+        public static T Visible<T>(this T self, bool value) where T: VisualElement 
+        {
+            self.visible = value;
+            return self;
+        }
+
+        public static T GenerateVisualContent<T>(this T self, Action<MeshGenerationContext> value) where T: VisualElement 
+        {
+            self.generateVisualContent = value;
+            return self;
+        }
+
+        public static T CacheAsBitmap<T>(this T self, bool value) where T: VisualElement 
+        {
+            self.cacheAsBitmap = value;
+            return self;
+        }
+
+        public static T Tooltip<T>(this T self, string value) where T: VisualElement 
+        {
+            self.tooltip = value;
             return self;
         }
 
